@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   force_ssl
   
-  private
+  protected
   
   def ensure_authenticated
     unless logged_in?
