@@ -1,0 +1,39 @@
+- if current_user 
+  %h1User Profile
+  %p
+    %strong Name:
+    = current_user.name 
+  
+  %p
+    %strong Provider:
+    = current_user.provider 
+  
+  %p
+    %strong OmniAuth UID:
+    = current_user.uid 
+  
+  %p= link_to "Log out", logout_path 
+- else 
+  %strong Sign in using
+
+  .auth_providers
+    - [:Facebook, :Google, :Twitter].each do |provider|
+      %a{:href=>"/auth/#{provider}"}
+        = image_tag "authentication/#{provider}_64.png", size: "64x64", alt: "#{provider}"
+        = content_tag :span, provider
+    - if ENV['RAILS_ENV'] == 'development'
+      = link_to 'developer', '/auth/developer'
+      
+
+  %p.help
+    You have enough passwords. 
+    You don't want to remember another, and I don't want to store it. 
+    Companies like 
+    Facebook, Google and Twitter 
+    allow other web sites like mine to use their authentication service. 
+    The Casa Danesa Project website has to trust them when they assert that you are you.
+    They provide some other information like your name as you have identified yourself
+    on their site.
+    After you log into their web site, they will tell this site to trust
+    that you are you. This makes life a lot easier for both of us.
+

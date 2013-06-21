@@ -1,0 +1,45 @@
+-# %!DOCTYPE html
+
+%html
+
+  %head
+    %title The Casa Danesa Project
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  %body
+    .body_header
+      %span
+        %strong The Casa Danesa Project
+      %br
+      = request.fullpath
+      %span.user_info
+        - if current_user
+          = current_user.aka
+          = link_to "Sign out", '/logout'
+
+      .flash_messages
+        - flash.each do |name, msg|
+          = content_tag :div, msg, :id => "flash_#{name}"
+
+    = yield
+
+    %h1 TO DO
+    %ul
+      %li Compete &amp; Test Twitter Auth
+      %li Compete &amp; Test Facebook Auth
+      %li Compete &amp; Test Google Auth
+      %li If creating a new provider object then validate User data
+      %li All integration or merging of providers
+      %li Upgrade to Rails 4
+      %li 
+        Get
+        = link_to '"Events"', events_path
+        page working
+      %li discover web-sockets (instead of polling for changes RailsCast #260)
+      %li Check out PhantomJS & Poltergeist (Phantom driver for Capybara)
+      %li Get integration tests working with Capybara 
+      %li Add active_model_serializers (unless not needed by Rails 4)
+      %li test driven Ember.js or Angular.js development
+   
