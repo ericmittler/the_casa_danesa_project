@@ -1,6 +1,4 @@
 class SessionsController < ApplicationController
-  def new
-  end
 
   def create
     user = provider = nil
@@ -29,6 +27,9 @@ class SessionsController < ApplicationController
 
   def failure
     redirect_to root_url, alert: "Authentication failed, please try again."
+  end
+  
+  def new
   end
   
 end

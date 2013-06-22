@@ -7,14 +7,20 @@ describe SessionsController do
     request.env['HTTPS'] = 'on'
   end
 
-  describe 'GET new' do
-    it 'should render the new template' do
-      get :new
-      response.should be_success
-      response.should render_template :new
+  describe 'post CREATE' do
+    context 'when no user is logged in' do
+      before :each do
+        session[:user_id] = nil
+      end
+    end
+
+    context 'when a user is logged in' do
+      before :each do
+        session[:user_id] = user.id
+      end
     end
   end
-  
+
   describe 'DELETE destroy' do
     before :each do 
       session[:user_id] = user.id
@@ -52,6 +58,14 @@ describe SessionsController do
       get :failure
       response.should redirect_to root_url
       flash[:alert].downcase.should include('authentication failed')
+    end
+  end
+
+  describe 'GET new' do
+    it 'should render the new template' do
+      get :new
+      response.should be_success
+      response.should render_template :new
     end
   end
 end

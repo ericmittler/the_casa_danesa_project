@@ -79,9 +79,9 @@ describe RspecTestingStubController do
         session[:user_id] = nil
       end
       
-      it 'should redirect to new_session_url' do
+      it 'should redirect to authenticate_url' do
         get :some_get_method
-        response.should redirect_to new_session_url
+        response.should redirect_to authenticate_url
       end
       
       it 'should remember the desired_url'

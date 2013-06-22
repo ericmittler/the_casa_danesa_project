@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   def ensure_authenticated
     unless logged_in?
       session[:desired_url] = request.fullpath
-      redirect_to new_session_url 
+      redirect_to authenticate_url
     end
   end
   

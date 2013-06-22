@@ -5,7 +5,7 @@ TheCasaDanesaProject::Application.routes.draw do
   get "home", to: 'home#index'
   
   # Authentication
-  get '/sessions/new', to: 'sessions#new'
+  get '/sessions/new', to: 'sessions#new', :as => 'authenticate'
   match "/auth/:provider/callback", to: "sessions#create"
   match "/auth/developer", to: 'sessions#create', :as => 'dev_login'
   match "/auth/failure", to: "sessions#failure"

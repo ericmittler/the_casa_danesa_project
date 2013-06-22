@@ -16,48 +16,48 @@ describe EventsController do
     end
     
     describe 'GET index' do
-      it 'should redirect to new_session_url' do
+      it 'should redirect to authenticate_url' do
         event = Event.create! valid_attributes
         get :index, {}, valid_session
-        response.should redirect_to new_session_url
+        response.should redirect_to authenticate_url
       end
     end
     
     describe 'GET show' do
-      it 'should redirect to new_session_url' do
+      it 'should redirect to authenticate_url' do
         event = Event.create! valid_attributes
         get :show, {:id => event.to_param}, valid_session
-        response.should redirect_to new_session_url
+        response.should redirect_to authenticate_url
       end
     end
 
     describe "GET new" do
-      it 'should redirect to new_session_url' do
+      it 'should redirect to authenticate_url' do
         get :new, {}, valid_session
-        response.should redirect_to new_session_url
+        response.should redirect_to authenticate_url
       end
     end
     
     describe "GET edit" do
-      it 'should redirect to new_session_url' do
+      it 'should redirect to authenticate_url' do
         event = Event.create! valid_attributes
         get :edit, {:id => event.to_param}, valid_session
-        response.should redirect_to new_session_url
+        response.should redirect_to authenticate_url
       end
     end    
     
     describe 'POST create' do
-       it 'should redirect to new_session_url' do
+       it 'should redirect to authenticate_url' do
          post :create, {:event => valid_attributes}, valid_session
-         response.should redirect_to new_session_url
+         response.should redirect_to authenticate_url
        end
      end
      
      describe 'PUT update' do
-       it 'should redirect to new_session_url' do
+       it 'should redirect to authenticate_url' do
          event = Event.create! valid_attributes
          put :update, {:id => event.to_param, :event => valid_attributes}, valid_session
-         response.should redirect_to new_session_url
+         response.should redirect_to authenticate_url
        end
      end
 
@@ -65,7 +65,7 @@ describe EventsController do
        it "redirects to the events list" do
          event = Event.create! valid_attributes
          delete :destroy, {:id => event.to_param}, valid_session
-         response.should redirect_to new_session_url
+         response.should redirect_to authenticate_url
        end
      end
   end
