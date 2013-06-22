@@ -10,6 +10,8 @@ gem 'haml_scaffold'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 
+gem 'uuidtools'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'

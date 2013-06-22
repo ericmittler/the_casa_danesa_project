@@ -1,5 +1,5 @@
 class AuthenitcationProvider < ActiveRecord::Base
-  attr_accessible :provider, :uid, :info, :extra
+  attr_accessible :provider, :uid, :info, :extra, :user_id
   validates :provider, :uid, :presence => true
   
   belongs_to :user

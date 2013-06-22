@@ -13,6 +13,7 @@ TheCasaDanesaProject::Application.routes.draw do
   
   # Resources
   resources :events
+  resources :users
 
   if Rails.env.test?
     namespace :rspec_testing_stub do
