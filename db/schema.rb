@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20130619185620) do
     t.string   "uid"
     t.text     "info"
     t.text     "extra"
+    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -31,7 +32,7 @@ ActiveRecord::Schema.define(:version => 20130619185620) do
 
   create_table "user_activities", :force => true do |t|
     t.integer  "user_id"
-    t.string   "type"
+    t.string   "name"
     t.string   "more_info"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
