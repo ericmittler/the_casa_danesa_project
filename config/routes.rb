@@ -2,7 +2,7 @@ TheCasaDanesaProject::Application.routes.draw do
 
   # Home & Root
   root :to => "home#index"
-  get "home/index"
+  get "home", to: 'home#index'
   
   # Authentication
   get '/sessions/new', to: 'sessions#new'
