@@ -14,12 +14,12 @@
 ActiveRecord::Schema.define(:version => 20130619185620) do
 
   create_table "authenitcation_providers", :force => true do |t|
+    t.string   "provider"
     t.string   "uid"
-    t.string   "provider_name"
-    t.string   "provided_data"
-    t.integer  "user_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.text     "info"
+    t.text     "extra"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "events", :force => true do |t|

@@ -5,7 +5,7 @@ TheCasaDanesaProject::Application.routes.draw do
   get "home/index"
   
   # Authentication
-  resources :sessions
+  get '/sessions/new', to: 'sessions#new'
   match "/auth/:provider/callback", to: "sessions#create"
   match "/auth/developer", to: 'sessions#create', :as => 'dev_login'
   match "/auth/failure", to: "sessions#failure"
@@ -13,7 +13,6 @@ TheCasaDanesaProject::Application.routes.draw do
   
   # Resources
   resources :events
-  resources :identities
 
   if Rails.env.test?
     namespace :rspec_testing_stub do

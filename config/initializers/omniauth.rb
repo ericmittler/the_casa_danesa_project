@@ -4,7 +4,6 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     
   provider :twitter, CONFIG[:omniauth][:twitter][:key], CONFIG[:omniauth][:twitter][:secret]
   
-  provider :identity, on_failed_registration: lambda { |env|
-    IdentitiesController.action(:new).call(env)
-  }
+  provider :facebook, CONFIG[:omniauth][:facebook][:id], CONFIG[:omniauth][:facebook][:secret]
+  
 end

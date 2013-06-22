@@ -7,7 +7,6 @@ gem 'haml'
 gem 'haml-rails'
 gem 'haml_scaffold'
 
-gem 'omniauth-identity'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 
