@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :ensure_authenticated, :only => [:destroy, :edit]
+
   def create
     provider = AuthenitcationProvider.find_by_uid session[:provider_uid]
     if provider.nil?
@@ -16,7 +18,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     render :text => 'delete unimplemented'
   end
 

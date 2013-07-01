@@ -7,7 +7,9 @@ describe UsersController do
     request.env['HTTPS'] = 'on'
   end
 
+
   describe 'post create' do
+
     context 'where there is no authentication provider' do
       it 'should redirect to authenticate_url' do
         session[:provider_uid] = nil
@@ -78,6 +80,25 @@ describe UsersController do
           end
         end
       end
+    end
+  end
+
+  describe 'destroy delete' do
+    it 'should ensure_authenticated' do
+      controller.should_receive(:ensure_authenticated)
+      delete :destroy, :id => user.id
+    end
+  end
+
+  describe 'get edit' do
+    before :each do
+      @provider = AuthenitcationProvider.create!(:provider => 'foo', :uid => UUIDTools::UUID.timestamp_create.to_s)
+      session[:provider_uid] = @provider.uid
+    end
+
+    it 'should ensure_authenticated' do
+      controller.should_receive(:ensure_authenticated)
+      get :edit, :id => user.id
     end
   end
 

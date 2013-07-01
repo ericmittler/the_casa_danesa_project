@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_filter :ensure_authenticated
+  before_filter :ensure_registered
   before_filter :ensure_event_manager, :excluding => [:index, :show]
 
   def index
