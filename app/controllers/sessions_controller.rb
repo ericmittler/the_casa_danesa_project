@@ -5,7 +5,6 @@ class SessionsController < ApplicationController
     if request.fullpath == dev_login_path && Rails.env == 'development'
       user = User.find_by_email('eric_mittler@mac.com')
       provider = AuthenitcationProvider.find_or_create_by_user_id_and_provider(user.id, 'developer authentication')
-
     else
       provider = AuthenitcationProvider.from_omniauth(env['omniauth.auth'])
       user = User.find_by_id(provider.user_id) if provider && provider.user_id

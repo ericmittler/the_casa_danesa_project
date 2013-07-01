@@ -18,6 +18,7 @@ TheCasaDanesaProject::Application.routes.draw do
   if Rails.env.test?
     namespace :rspec_testing_stub do
       get 'some_get_method', :action => :some_get_method
+      get 'some_other_get_method', :action => :some_other_get_method
     end
   end
 
