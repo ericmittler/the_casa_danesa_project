@@ -4,8 +4,10 @@ FactoryGirl.define do
   end
 
   factory :user do
-    name "Testing User"
+    first_name "Testing"
+    last_name "User"
     email
+    email_validated true
     aka "Joe"
   end
 end

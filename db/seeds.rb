@@ -3,13 +3,11 @@
 #
 # Examples:
 #
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
+#   cities => City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-u = User.new
-u.name = 'Dev Example User'
-u.email = 'eric_mittler@mac.com'
-u.uid = 'some-long-uuid'
-u.aka = 'Eric'
-u.event_manager = true
-u.save!
+User.create!(:first_name => 'Developer',
+             :last_name => 'Example User',
+             :email => 'eric_mittler@mac.com',
+             :email_validated => true,
+             :event_manager => true)

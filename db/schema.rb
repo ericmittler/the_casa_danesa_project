@@ -40,12 +40,14 @@ ActiveRecord::Schema.define(:version => 20130619185620) do
 
   create_table "users", :force => true do |t|
     t.string   "uid"
-    t.string   "name"
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "aka"
     t.string   "email"
-    t.boolean  "event_manager"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.boolean  "email_validated", :default => false
+    t.boolean  "event_manager",   :default => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
   end
 
 end
