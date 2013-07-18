@@ -22,7 +22,7 @@ describe UsersController do
       let(:valid_params) { {'email' => "e#{UUIDTools::UUID.timestamp_create.to_s}@example.com",
                             'first_name' => 'Joe', 'last_name' => 'Smoe'} }
       before :each do
-        @provider = AuthenitcationProvider.create!(:provider => 'foo', :uid => UUIDTools::UUID.timestamp_create.to_s)
+        @provider = AuthenticationProvider.create!(:provider => 'foo', :uid => UUIDTools::UUID.timestamp_create.to_s)
         session[:provider_uid] = @provider.uid
       end
 
@@ -92,7 +92,7 @@ describe UsersController do
 
   describe 'get edit' do
     before :each do
-      @provider = AuthenitcationProvider.create!(:provider => 'foo', :uid => UUIDTools::UUID.timestamp_create.to_s)
+      @provider = AuthenticationProvider.create!(:provider => 'foo', :uid => UUIDTools::UUID.timestamp_create.to_s)
       session[:provider_uid] = @provider.uid
     end
 

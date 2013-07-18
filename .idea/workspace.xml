@@ -2,20 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/support/controller/authentication_authoriation_helpers.rb" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/favicon.ico" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/controllers/events_controller_spec.rb" afterPath="$PROJECT_DIR$/spec/controllers/events_controller_spec.rb" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/models/authenitcation_provider.rb" afterPath="$PROJECT_DIR$/app/models/authentication_provider.rb" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/db/migrate/20130619181013_create_authenitcation_providers.rb" afterPath="$PROJECT_DIR$/db/migrate/20130619181013_create_authentication_providers.rb" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/spec/models/authenitcation_provider_spec.rb" afterPath="$PROJECT_DIR$/spec/models/authentication_provider_spec.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/sessions_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/sessions_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/controllers/sessions_controller_spec.rb" afterPath="$PROJECT_DIR$/spec/controllers/sessions_controller_spec.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/spec_helper.rb" afterPath="$PROJECT_DIR$/spec/spec_helper.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/controllers/users_controller_spec.rb" afterPath="$PROJECT_DIR$/spec/controllers/users_controller_spec.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="the_casa_danesa_project.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1374188712174" ignored="false" />
-    <file path="/sessions_controller_spec.rb" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1374190291576" ignored="false" />
+    <file path="/Dummy.txt" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1374190446580" ignored="false" />
+    <file path="/sessions_controller_spec.rb" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1374191553460" ignored="false" />
     <file path="/routes.rb" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1371919039188" ignored="false" />
     <file path="/application_controller_spec.rb" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1372640759461" ignored="false" />
-    <file path="/sessions_controller.rb" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1374190158636" ignored="false" />
+    <file path="/sessions_controller.rb" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1374191458977" ignored="false" />
     <file path="/a.dummy" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1374188886890" ignored="false" />
     <file path="/user.rb" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1372644050385" ignored="false" />
     <file path="/factories.rb" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1371951880733" ignored="false" />
@@ -38,8 +41,9 @@
     <file path="/events_controller.rb" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1372644863306" ignored="false" />
     <file path="/events_controller_spec.rb" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1374189853617" ignored="false" />
     <file path="/controller_macros.rb" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1372648201290" ignored="false" />
-    <file path="/temp.rb" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1372647706649" ignored="false" />
+    <file path="/temp.rb" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1374190970298" ignored="false" />
     <file path="/authentication_authoriation_helpers.rb" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1374188795486" ignored="false" />
+    <file path="/20130619181013_create_authenitcation_providers.rb" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1374191027856" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +68,16 @@
           <file leaf-file-name="sessions_controller.rb" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/controllers/sessions_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="4" column="28" selection-start="117" selection-end="117" vertical-scroll-proportion="0.12526096">
+                <state line="6" column="0" selection-start="217" selection-end="217" vertical-scroll-proportion="0.14705883">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="application_controller.rb" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="20" column="7" selection-start="433" selection-end="433" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -77,7 +90,7 @@
           <file leaf-file-name="sessions_controller_spec.rb" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/spec/controllers/sessions_controller_spec.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="7" column="5" selection-start="153" selection-end="153" vertical-scroll-proportion="0.21920668">
+                <state line="17" column="0" selection-start="549" selection-end="549" vertical-scroll-proportion="0.23039216">
                   <folding />
                 </state>
               </provider>
@@ -92,6 +105,9 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="GeneratorOptions">
+    <option name="VCS_SHOW_CONFIRMATION" value="true" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -103,8 +119,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/config/routes.rb" />
-        <option value="$PROJECT_DIR$/spec/controllers/application_controller_spec.rb" />
         <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/spec/models/user_spec.rb" />
         <option value="$PROJECT_DIR$/spec/controllers/users_controller_spec.rb" />
@@ -117,6 +131,8 @@
         <option value="$PROJECT_DIR$/spec/support/controller/authentication_authoriation_helpers.rb" />
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/spec/controllers/events_controller_spec.rb" />
+        <option value="$PROJECT_DIR$/app/models/authentication_provider.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20130619181013_create_authenitcation_providers.rb" />
         <option value="$PROJECT_DIR$/spec/controllers/sessions_controller_spec.rb" />
         <option value="$PROJECT_DIR$/app/controllers/sessions_controller.rb" />
       </list>
@@ -400,7 +416,7 @@
       <recent name="$PROJECT_DIR$/spec/support/controller" />
     </key>
   </component>
-  <component name="RunManager" selected="RSpec.sessions_controller_spec">
+  <component name="RunManager" selected="RSpec.SessionsController post CREATE when in development mode and developer requests access should set the current_user to the developer">
     <configuration default="false" name="EventsController GET index" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true">
       <predefined_log_file id="RUBY_RSPEC" enabled="true" />
       <module name="the_casa_danesa_project" />
@@ -852,11 +868,11 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="RSpec.sessions_controller_spec" />
-        <item index="1" class="java.lang.String" itemvalue="RSpec.SessionsController post CREATE when in development mode and developer requests access should set the current_user to the developer" />
+        <item index="0" class="java.lang.String" itemvalue="RSpec.SessionsController post CREATE when in development mode and developer requests access should set the current_user to the developer" />
+        <item index="1" class="java.lang.String" itemvalue="RSpec.sessions_controller_spec" />
         <item index="2" class="java.lang.String" itemvalue="RSpec.sessions_controller_spec" />
-        <item index="3" class="java.lang.String" itemvalue="RSpec.events_controller_spec" />
-        <item index="4" class="java.lang.String" itemvalue="RSpec.EventsController GET index when authenticated assigns all events as @events" />
+        <item index="3" class="java.lang.String" itemvalue="RSpec.sessions_controller_spec" />
+        <item index="4" class="java.lang.String" itemvalue="RSpec.events_controller_spec" />
       </list>
     </recent_temporary>
   </component>
@@ -908,7 +924,11 @@
       <created>1372645917594</created>
       <updated>1372645917594</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="ensure_authenticated refactor">
+      <created>1374190449693</created>
+      <updated>1374190449693</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -935,21 +955,21 @@
     <frame x="4" y="22" width="1436" height="878" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33418694" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16389245" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32951945" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16653876" sideWeight="0.64020485" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3352518" sideWeight="0.6709347" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37516004" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -997,7 +1017,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="EventsController ensure_registered instead of just authenticated; UsersController ensures_authenticated for destroy &amp; edit;" />
+    <option name="LAST_COMMIT_MESSAGE" value="ensure_authenticated refactor" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1016,6 +1036,7 @@
     <MESSAGE value="SessionsController authenticates for Facebook &amp; Twitter and assigns user if one exists; developer log in by-pass if rails.env == developer; Stubbed UsersController" />
     <MESSAGE value="ApplicationController#ensure_register; User#aka, User#full_name; User.registered?" />
     <MESSAGE value="EventsController ensure_registered instead of just authenticated; UsersController ensures_authenticated for destroy &amp; edit;" />
+    <MESSAGE value="ensure_authenticated refactor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1023,16 +1044,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="8" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20130608151122_create_users.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="19" selection-start="180" selection-end="180" vertical-scroll-proportion="0.119521916" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spec/factories.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="205" selection-end="205" vertical-scroll-proportion="0.0" />
@@ -1092,13 +1103,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="6" selection-start="209" selection-end="209" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spec/controllers/events_controller_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="12" column="5" selection-start="256" selection-end="256" vertical-scroll-proportion="-3.2727273">
@@ -1113,16 +1117,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="7" selection-start="433" selection-end="433" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20130619181013_create_authentication_providers.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="272" selection-end="272" vertical-scroll-proportion="0.44622424">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/authentication_provider.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="6" selection-start="6" selection-end="6" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/sessions_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="28" selection-start="117" selection-end="117" vertical-scroll-proportion="0.12526096">
+        <state line="6" column="0" selection-start="217" selection-end="217" vertical-scroll-proportion="0.14705883">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/controllers/sessions_controller_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="5" selection-start="153" selection-end="153" vertical-scroll-proportion="0.21920668">
+        <state line="17" column="0" selection-start="549" selection-end="549" vertical-scroll-proportion="0.23039216">
           <folding />
         </state>
       </provider>

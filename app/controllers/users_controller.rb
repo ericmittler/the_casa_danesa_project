@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_filter :ensure_authenticated, :only => [:destroy, :edit]
 
   def create
-    provider = AuthenitcationProvider.find_by_uid session[:provider_uid]
+    provider = AuthenticationProvider.find_by_uid session[:provider_uid]
     if provider.nil?
       redirect_to authenticate_url
     else
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    provider = AuthenitcationProvider.find_by_uid(session[:provider_uid])
+    provider = AuthenticationProvider.find_by_uid(session[:provider_uid])
     @user = provider.user
   end
 

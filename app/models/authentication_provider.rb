@@ -1,4 +1,4 @@
-class AuthenitcationProvider < ActiveRecord::Base
+class AuthenticationProvider < ActiveRecord::Base
   attr_accessible :provider, :uid, :info, :extra, :user_id
   validates :provider, :uid, :presence => true
   

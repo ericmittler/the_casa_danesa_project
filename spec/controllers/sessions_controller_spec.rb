@@ -11,7 +11,9 @@ describe SessionsController do
     context 'when in development mode and developer requests access' do
       before :each do
         Rails.stub(:env).and_return('development')
-        @developer = FactoryGirl.create(:user,:email=>'eric_mittler@mac.com')
+        @developer = FactoryGirl.create(:user, :email => 'eric_mittler@mac.com')
+        AuthenticationProvider.create!(
+            :user_id=>@developer.id, :uid=>'test', :provider=>'developer authentication')
       end
 
       after :each do
@@ -32,7 +34,7 @@ describe SessionsController do
       it 'should redirect to failure' do
         controller.env['omniauth.auth'] = {'provider' => 'not provider', 'uid' => 'none'}
         User.stub!(:find).and_return nil
-        AuthenitcationProvider.stub(:from_omniauth).and_return nil
+        AuthenticationProvider.stub(:from_omniauth).and_return nil
         post :create
         response.should redirect_to authenticate_url
         flash[:alert].downcase.should include('authentication failed')
@@ -53,8 +55,8 @@ describe SessionsController do
 
       context 'when the user has never authenticated with the given provider' do
         it 'should create a provider' do
-          expect { post :create }.to change(AuthenitcationProvider, :count).by(1)
-          ap = AuthenitcationProvider.last
+          expect { post :create }.to change(AuthenticationProvider, :count).by(1)
+          ap = AuthenticationProvider.last
           ap.uid.should == controller.env['omniauth.auth']['uid']
           ap.provider.should == 'some-provider'
         end
@@ -62,11 +64,11 @@ describe SessionsController do
 
       context 'when the user has authenticated before with the give provider' do
         before :each do
-          AuthenitcationProvider.find_or_create_by_provider_and_uid('some-provider',
+          AuthenticationProvider.find_or_create_by_provider_and_uid('some-provider',
                                                                     controller.env['omniauth.auth']['uid'])
         end
         it 'should not create a provider' do
-          expect { post :create }.to change(AuthenitcationProvider, :count).by(0)
+          expect { post :create }.to change(AuthenticationProvider, :count).by(0)
         end
       end
 
@@ -74,7 +76,7 @@ describe SessionsController do
         before :each do
           controller.env['omniauth.auth'] = {'provider' => 'some-provider',
                                              'uid' => UUIDTools::UUID.timestamp_create.to_s}
-          @provider = AuthenitcationProvider.create!(
+          @provider = AuthenticationProvider.create!(
               :uid => controller.env['omniauth.auth']['uid'],
               :user_id => nil, :provider=>'some-provider')
         end
@@ -89,7 +91,7 @@ describe SessionsController do
         before :each do
           controller.env['omniauth.auth'] = {'provider' => 'some-provider',
                                              'uid' => UUIDTools::UUID.timestamp_create.to_s}
-          @provider = AuthenitcationProvider.create!(
+          @provider = AuthenticationProvider.create!(
               :uid => controller.env['omniauth.auth']['uid'],
               :user_id => user.id, :provider=>'some-provider')
         end

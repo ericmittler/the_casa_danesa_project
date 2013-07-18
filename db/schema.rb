@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(:version => 20130619185620) do
 
-  create_table "authenitcation_providers", :force => true do |t|
+  create_table "authentication_providers", :force => true do |t|
     t.string   "provider"
     t.string   "uid"
     t.text     "info"

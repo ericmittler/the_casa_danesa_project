@@ -1,6 +1,6 @@
-class CreateAuthenitcationProviders < ActiveRecord::Migration
+class CreateAuthenticationProviders < ActiveRecord::Migration
   def change
-    create_table :authenitcation_providers do |t|
+    create_table :authentication_providers do |t|
       t.string :provider
       t.string :uid
       t.text :info
