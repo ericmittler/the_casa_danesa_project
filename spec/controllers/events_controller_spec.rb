@@ -2,208 +2,236 @@ require 'spec_helper'
 
 describe EventsController do
 
-  let(:valid_attributes) { { "title" => "MyString" } }
+  let(:valid_attributes) { {"title" => "MyString"} }
 
-  let(:valid_session) { {} }
+  let(:event) { Event.create! valid_attributes }
+
+  let(:user) { FactoryGirl.create(:user) }
 
   before :each do
     request.env['HTTPS'] = 'on'
   end
 
-  describe 'when not authenticated' do  
-    before :each do
-      controller.stub(:logged_in?).and_return(false)
-    end
-    
-    describe 'GET index' do
-      it 'should redirect to authenticate_url' do
-        event = Event.create! valid_attributes
-        get :index, {}, valid_session
-        response.should redirect_to authenticate_url
-      end
-    end
-    
-    describe 'GET show' do
-      it 'should redirect to authenticate_url' do
-        event = Event.create! valid_attributes
-        get :show, {:id => event.to_param}, valid_session
-        response.should redirect_to authenticate_url
-      end
+
+  describe "GET index" do
+    it 'should ensure_authenticated' do
+      controller.should_receive(:ensure_registered)
+      get :index
     end
 
-    describe "GET new" do
-      it 'should redirect to authenticate_url' do
-        get :new, {}, valid_session
-        response.should redirect_to authenticate_url
+    context 'when authenticated' do
+      before :each do
+        authenticate_for_specs(user)
       end
-    end
-    
-    describe "GET edit" do
-      it 'should redirect to authenticate_url' do
-        event = Event.create! valid_attributes
-        get :edit, {:id => event.to_param}, valid_session
-        response.should redirect_to authenticate_url
-      end
-    end    
-    
-    describe 'POST create' do
-       it 'should redirect to authenticate_url' do
-         post :create, {:event => valid_attributes}, valid_session
-         response.should redirect_to authenticate_url
-       end
-     end
-     
-     describe 'PUT update' do
-       it 'should redirect to authenticate_url' do
-         event = Event.create! valid_attributes
-         put :update, {:id => event.to_param, :event => valid_attributes}, valid_session
-         response.should redirect_to authenticate_url
-       end
-     end
 
-     describe "DELETE destroy" do
-       it "redirects to the events list" do
-         event = Event.create! valid_attributes
-         delete :destroy, {:id => event.to_param}, valid_session
-         response.should redirect_to authenticate_url
-       end
-     end
-  end
-  
-  describe 'when authenticated' do
-    
-    describe 'when authorized' do
-    before :each do
-      controller.stub(:ensure_authenticated).and_return(true)
-    end
-    
-    describe "GET index" do
       it "assigns all events as @events" do
-        event = Event.create! valid_attributes
-        get :index, {}, valid_session
-        assigns(:events).should eq([event])
+        events = [event]
+        get :index, {}
+        assigns(:events).should eq(events)
       end
     end
-  
-    describe "GET show" do
+  end
+
+  describe "GET show" do
+    it 'should ensure_authenticated' do
+      controller.should_receive(:ensure_registered)
+      get :show, :id => event.id
+    end
+
+
+    context 'when authenticated' do
+      before :each do
+        authenticate_for_specs(user)
+      end
+
       it "assigns the requested event as @event" do
-        event = Event.create! valid_attributes
-        get :show, {:id => event.to_param}, valid_session
+        get :show, {:id => event.to_param}
         assigns(:event).should eq(event)
       end
     end
-  
-    describe "GET new" do
+  end
+
+  describe "GET new" do
+    it 'should ensure_authenticated' do
+      controller.should_receive(:ensure_registered)
+      get :new
+    end
+
+    context 'when authenticated' do
+      before :each do
+        authenticate_for_specs(user)
+      end
+
+      it 'should ensure_event_manager' do
+        controller.should_receive(:ensure_event_manager)
+        get :new
+      end
+
       it "assigns a new event as @event" do
-        get :new, {}, valid_session
+        get :new, {}
         assigns(:event).should be_a_new(Event)
       end
     end
-  
-    describe "GET edit" do
+  end
+
+  describe "GET edit" do
+    it 'should ensure_authenticated' do
+      controller.should_receive(:ensure_registered)
+      get :edit, :id => event.id
+    end
+
+    context 'when authenticated' do
+      before :each do
+        authenticate_for_specs(user)
+      end
+      it 'should ensure_event_manager' do
+        controller.should_receive(:ensure_event_manager)
+        get :edit, :id => event.id
+      end
+
       it "assigns the requested event as @event" do
-        event = Event.create! valid_attributes
-        get :edit, {:id => event.to_param}, valid_session
+        get :edit, {:id => event.id}
         assigns(:event).should eq(event)
       end
     end
-  
-    describe "POST create" do
+  end
+
+  describe "POST create" do
+    it 'should ensure_authenticated' do
+      controller.should_receive(:ensure_registered)
+      post :create, {:event => valid_attributes}
+    end
+
+    context 'when authenticated' do
+      before :each do
+        authenticate_for_specs(user)
+      end
+
+      it 'should ensure_event_manager' do
+        controller.should_receive(:ensure_event_manager)
+        post :create, {:event => valid_attributes}
+      end
+
       describe "with valid params" do
         it "creates a new Event" do
           expect {
-            post :create, {:event => valid_attributes}, valid_session
+            post :create, {:event => valid_attributes}
           }.to change(Event, :count).by(1)
         end
-  
+
         it "assigns a newly created event as @event" do
-          post :create, {:event => valid_attributes}, valid_session
+          post :create, {:event => valid_attributes}
           assigns(:event).should be_a(Event)
           assigns(:event).should be_persisted
         end
-  
+
         it "redirects to the created event" do
-          post :create, {:event => valid_attributes}, valid_session
+          post :create, {:event => valid_attributes}
           response.should redirect_to(Event.last)
         end
       end
-  
+
       describe "with invalid params" do
         it "assigns a newly created but unsaved event as @event" do
           # Trigger the behavior that occurs when invalid params are submitted
           Event.any_instance.stub(:save).and_return(false)
-          post :create, {:event => { "title" => "" }}, valid_session
+          post :create, {:event => {"title" => ""}}
           assigns(:event).should be_a_new(Event)
         end
-  
+
         it "re-renders the 'new' template" do
           # Trigger the behavior that occurs when invalid params are submitted
           Event.any_instance.stub(:save).and_return(false)
-          post :create, {:event => { 'title' => nil }}, valid_session
+          post :create, {:event => {'title' => nil}}
           response.should render_template("new")
         end
       end
     end
-  
-    describe "PUT update" do
+  end
+
+  describe "PUT update" do
+    it 'should ensure_authenticated' do
+      controller.should_receive(:ensure_registered)
+      put :update, {:id => event.id, :event => valid_attributes}
+    end
+
+    context 'when authenticated' do
+      before :each do
+        authenticate_for_specs(user)
+      end
+      it 'should ensure_event_manager' do
+        controller.should_receive(:ensure_event_manager)
+        put :update, {:id => event.id, :event => valid_attributes}
+      end
+
       describe "with valid params" do
         it "updates the requested event" do
-          event = Event.create! valid_attributes
-          # Assuming there are no other events in the database, this
-          # specifies that the Event created on the previous line
-          # receives the :update_attributes message with whatever params are
-          # submitted in the request.
-          Event.any_instance.should_receive(:update_attributes).with({ "title" => "MyString" })
-          put :update, {:id => event.to_param, :event => { "title" => "MyString" }}, valid_session
+          Event.any_instance.should_receive(:update_attributes).with({"title" => "MyString"})
+          put :update, {:id => event.id, :event => {"title" => "MyString"}}
         end
-  
+
         it "assigns the requested event as @event" do
           event = Event.create! valid_attributes
-          put :update, {:id => event.to_param, :event => valid_attributes}, valid_session
+          put :update, {:id => event.id, :event => valid_attributes}
           assigns(:event).should eq(event)
         end
-  
+
         it "redirects to the event" do
           event = Event.create! valid_attributes
-          put :update, {:id => event.to_param, :event => valid_attributes}, valid_session
+          put :update, {:id => event.to_param, :event => valid_attributes}
           response.should redirect_to(event)
         end
       end
-  
+
       describe "with invalid params" do
         it "assigns the event as @event" do
           event = Event.create! valid_attributes
           # Trigger the behavior that occurs when invalid params are submitted
           Event.any_instance.stub(:save).and_return(false)
-          put :update, {:id => event.to_param, :event => { "title" => "invalid value" }}, valid_session
+          put :update, {:id => event.to_param, :event => {"title" => "invalid value"}}
           assigns(:event).should eq(event)
         end
-  
+
         it "re-renders the 'edit' template" do
           event = Event.create! valid_attributes
           # Trigger the behavior that occurs when invalid params are submitted
           Event.any_instance.stub(:save).and_return(false)
-          put :update, {:id => event.to_param, :event => { "title" => "invalid value" }}, valid_session
+          put :update, {:id => event.to_param, :event => {"title" => "invalid value"}}
           response.should render_template("edit")
         end
       end
     end
-  
-    describe "DELETE destroy" do
+  end
+
+  describe "DELETE destroy" do
+    it 'should ensure_authenticated' do
+      controller.should_receive(:ensure_registered)
+      delete :destroy, {:id => event.to_param}
+    end
+
+    context 'when authenticated' do
+      before :each do
+        authenticate_for_specs(user)
+      end
+
+      it 'should ensure_event_manager' do
+        controller.should_receive(:ensure_event_manager)
+        delete :destroy, {:id => event.to_param}
+      end
+
       it "destroys the requested event" do
         event = Event.create! valid_attributes
         expect {
-          delete :destroy, {:id => event.to_param}, valid_session
+          delete :destroy, {:id => event.to_param}
         }.to change(Event, :count).by(-1)
       end
-  
+
       it "redirects to the events list" do
+        puts "1. session[:user_id]: #{session[:user_id]}"
         event = Event.create! valid_attributes
-        delete :destroy, {:id => event.to_param}, valid_session
+        delete :destroy, {:id => event.to_param}
         response.should redirect_to(events_url)
       end
     end
   end
-
-  end
-  end
+end

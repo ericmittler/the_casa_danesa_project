@@ -11,7 +11,7 @@ describe SessionsController do
     context 'when in development mode and developer requests access' do
       before :each do
         Rails.stub(:env).and_return('development')
-        @developer = User.find_or_create_by_email('eric_mittler@mac.com')
+        @developer = FactoryGirl.create(:user,:email=>'eric_mittler@mac.com')
       end
 
       after :each do
