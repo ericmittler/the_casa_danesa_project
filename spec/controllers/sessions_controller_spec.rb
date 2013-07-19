@@ -113,7 +113,7 @@ describe SessionsController do
             session[:desired_url] = 'some/desired/url'
             post :create
             response.should redirect_to 'some/desired/url'
-            flash[:notice].downcase.should include('signed in')
+            flash[:notice].downcase.should include('authenticated via some-provider')
             session[:desired_url].should be_nil
           end
         end
@@ -123,14 +123,14 @@ describe SessionsController do
             session[:desired_url] = nil
             post :create
             response.should redirect_to root_url
-            flash[:notice].downcase.should include('signed in')
+            flash[:notice].downcase.should include('authenticated via some-provider')
           end
         end
 
         it 'should flash notice "signed in"' do
           post :create
           response.should redirect_to root_url
-          flash[:notice].downcase.should include('signed in')
+          flash[:notice].downcase.should include('authenticated via some-provider')
         end
       end
     end

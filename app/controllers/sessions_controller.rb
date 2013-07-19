@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       url = session[:desired_url] ? session[:desired_url] : root_url
       session[:desired_url] = nil
-      redirect_to url, notice: "Signed in #{user.first_name}!"
+      redirect_to url, notice: "#{user.first_name} authenticated via #{provider.provider}"
     elsif !user && provider
       redirect_to new_user_url
     else

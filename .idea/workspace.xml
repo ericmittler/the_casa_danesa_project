@@ -2,23 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/models/authenitcation_provider.rb" afterPath="$PROJECT_DIR$/app/models/authentication_provider.rb" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/db/migrate/20130619181013_create_authenitcation_providers.rb" afterPath="$PROJECT_DIR$/db/migrate/20130619181013_create_authentication_providers.rb" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/spec/models/authenitcation_provider_spec.rb" afterPath="$PROJECT_DIR$/spec/models/authentication_provider_spec.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/sessions_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/sessions_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/controllers/sessions_controller_spec.rb" afterPath="$PROJECT_DIR$/spec/controllers/sessions_controller_spec.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/controllers/users_controller_spec.rb" afterPath="$PROJECT_DIR$/spec/controllers/users_controller_spec.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="the_casa_danesa_project.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1374190446580" ignored="false" />
-    <file path="/sessions_controller_spec.rb" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1374191553460" ignored="false" />
+    <file path="/Dummy.txt" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1374191667132" ignored="false" />
+    <file path="/sessions_controller_spec.rb" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1374192357269" ignored="false" />
     <file path="/routes.rb" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1371919039188" ignored="false" />
     <file path="/application_controller_spec.rb" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1372640759461" ignored="false" />
-    <file path="/sessions_controller.rb" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1374191458977" ignored="false" />
+    <file path="/sessions_controller.rb" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1374192283548" ignored="false" />
     <file path="/a.dummy" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1374188886890" ignored="false" />
     <file path="/user.rb" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1372644050385" ignored="false" />
     <file path="/factories.rb" changelist="f094d9e3-0e79-4a5d-bfeb-4570dd71f050" time="1371951880733" ignored="false" />
@@ -68,7 +62,7 @@
           <file leaf-file-name="sessions_controller.rb" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/controllers/sessions_controller.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="6" column="0" selection-start="217" selection-end="217" vertical-scroll-proportion="0.14705883">
+                <state line="18" column="88" selection-start="954" selection-end="954" vertical-scroll-proportion="0.46075085">
                   <folding />
                 </state>
               </provider>
@@ -90,7 +84,7 @@
           <file leaf-file-name="sessions_controller_spec.rb" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/spec/controllers/sessions_controller_spec.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="17" column="0" selection-start="549" selection-end="549" vertical-scroll-proportion="0.23039216">
+                <state line="146" column="24" selection-start="5273" selection-end="5273" vertical-scroll-proportion="0.75816995">
                   <folding />
                 </state>
               </provider>
@@ -133,8 +127,8 @@
         <option value="$PROJECT_DIR$/spec/controllers/events_controller_spec.rb" />
         <option value="$PROJECT_DIR$/app/models/authentication_provider.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20130619181013_create_authenitcation_providers.rb" />
-        <option value="$PROJECT_DIR$/spec/controllers/sessions_controller_spec.rb" />
         <option value="$PROJECT_DIR$/app/controllers/sessions_controller.rb" />
+        <option value="$PROJECT_DIR$/spec/controllers/sessions_controller_spec.rb" />
       </list>
     </option>
   </component>
@@ -416,42 +410,7 @@
       <recent name="$PROJECT_DIR$/spec/support/controller" />
     </key>
   </component>
-  <component name="RunManager" selected="RSpec.SessionsController post CREATE when in development mode and developer requests access should set the current_user to the developer">
-    <configuration default="false" name="EventsController GET index" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true">
-      <predefined_log_file id="RUBY_RSPEC" enabled="true" />
-      <module name="the_casa_danesa_project" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
-      <envs>
-        <env name="RAILS_ENV" value="test" />
-        <env name="JRUBY_OPTS" value="-X+O" />
-      </envs>
-      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
-      <EXTENSION ID="JRubyRunConfigurationExtension" />
-      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
-        <COVERAGE_PATTERN ENABLED="true">
-          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
-        </COVERAGE_PATTERN>
-      </EXTENSION>
-      <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$PROJECT_DIR$/spec/controllers/events_controller_spec.rb" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="EventsController GET index" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_SPEC_RUNNER" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
-      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
-      <RunnerSettings RunnerId="RubyRunner" />
-      <ConfigurationWrapper RunnerId="RubyRunner" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="RSpec.sessions_controller_spec">
     <configuration default="false" name="EventsController GET index when authenticated assigns all events as @events" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true">
       <predefined_log_file id="RUBY_RSPEC" enabled="true" />
       <module name="the_casa_danesa_project" />
@@ -547,6 +506,41 @@
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="SessionsController post CREATE when in development mode and developer requests access should set the current_user to the developer" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_SPEC_RUNNER" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="DRB" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="FULL_BACKTRACE" VALUE="false" />
+      <RunnerSettings RunnerId="RubyRunner" />
+      <ConfigurationWrapper RunnerId="RubyRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="SessionsController post CREATE when a user fails to authenticate should redirect to failure" type="RSpecRunConfigurationType" factoryName="RSpec" temporary="true">
+      <predefined_log_file id="RUBY_RSPEC" enabled="true" />
+      <module name="the_casa_danesa_project" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$PROJECT_DIR$" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <envs>
+        <env name="RAILS_ENV" value="test" />
+        <env name="JRUBY_OPTS" value="-X+O" />
+      </envs>
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="true" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <EXTENSION ID="org.jetbrains.plugins.ruby.motion.run.MotionSimulatorRunExtension" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="$PROJECT_DIR$/spec/controllers/sessions_controller_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_RUNNER_PATH" VALUE="" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="**/*_spec.rb" />
+      <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_EXAMPLE_NAME" VALUE="SessionsController post CREATE when a user fails to authenticate should redirect to failure" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="SPEC_ARGS" VALUE="" />
       <RSPEC_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_VERSION" VALUE="" />
@@ -860,19 +854,19 @@
       <item index="1" class="java.lang.String" itemvalue="Rake.spec" />
       <item index="2" class="java.lang.String" itemvalue="Rails.Production: the_casa_danesa_project" />
       <item index="3" class="java.lang.String" itemvalue="Rails.Development: the_casa_danesa_project" />
-      <item index="4" class="java.lang.String" itemvalue="RSpec.EventsController GET index" />
-      <item index="5" class="java.lang.String" itemvalue="RSpec.EventsController GET index when authenticated assigns all events as @events" />
-      <item index="6" class="java.lang.String" itemvalue="RSpec.events_controller_spec" />
-      <item index="7" class="java.lang.String" itemvalue="RSpec.SessionsController post CREATE when in development mode and developer requests access should set the current_user to the developer" />
+      <item index="4" class="java.lang.String" itemvalue="RSpec.EventsController GET index when authenticated assigns all events as @events" />
+      <item index="5" class="java.lang.String" itemvalue="RSpec.events_controller_spec" />
+      <item index="6" class="java.lang.String" itemvalue="RSpec.SessionsController post CREATE when in development mode and developer requests access should set the current_user to the developer" />
+      <item index="7" class="java.lang.String" itemvalue="RSpec.SessionsController post CREATE when a user fails to authenticate should redirect to failure" />
       <item index="8" class="java.lang.String" itemvalue="RSpec.sessions_controller_spec" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="RSpec.SessionsController post CREATE when in development mode and developer requests access should set the current_user to the developer" />
-        <item index="1" class="java.lang.String" itemvalue="RSpec.sessions_controller_spec" />
-        <item index="2" class="java.lang.String" itemvalue="RSpec.sessions_controller_spec" />
+        <item index="0" class="java.lang.String" itemvalue="RSpec.sessions_controller_spec" />
+        <item index="1" class="java.lang.String" itemvalue="RSpec.SessionsController post CREATE when a user fails to authenticate should redirect to failure" />
+        <item index="2" class="java.lang.String" itemvalue="RSpec.SessionsController post CREATE when in development mode and developer requests access should set the current_user to the developer" />
         <item index="3" class="java.lang.String" itemvalue="RSpec.sessions_controller_spec" />
-        <item index="4" class="java.lang.String" itemvalue="RSpec.events_controller_spec" />
+        <item index="4" class="java.lang.String" itemvalue="RSpec.sessions_controller_spec" />
       </list>
     </recent_temporary>
   </component>
@@ -928,7 +922,11 @@
       <created>1374190449693</created>
       <updated>1374190449693</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="AuthenticationProvider spelling corrected;">
+      <created>1374191673792</created>
+      <updated>1374191673792</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -965,7 +963,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37516004" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28681177" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1017,7 +1015,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="ensure_authenticated refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="AuthenticationProvider spelling corrected;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1037,6 +1035,7 @@
     <MESSAGE value="ApplicationController#ensure_register; User#aka, User#full_name; User.registered?" />
     <MESSAGE value="EventsController ensure_registered instead of just authenticated; UsersController ensures_authenticated for destroy &amp; edit;" />
     <MESSAGE value="ensure_authenticated refactor" />
+    <MESSAGE value="AuthenticationProvider spelling corrected;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1140,14 +1139,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/sessions_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="217" selection-end="217" vertical-scroll-proportion="0.14705883">
+        <state line="18" column="88" selection-start="954" selection-end="954" vertical-scroll-proportion="0.46075085">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/controllers/sessions_controller_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="549" selection-end="549" vertical-scroll-proportion="0.23039216">
+        <state line="146" column="24" selection-start="5273" selection-end="5273" vertical-scroll-proportion="0.75816995">
           <folding />
         </state>
       </provider>
