@@ -34,3 +34,5 @@ pickle-email-*.html
 .project
 /config/application.yml
 /config/database.yml
+.idea/*
+.DS_Store
