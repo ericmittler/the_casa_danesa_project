@@ -5,8 +5,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :first_name
       t.string :last_name
       t.string :aka
-      t.string :email
-      t.boolean :email_validated, :default => false
       t.boolean :event_manager, :default => false
 
       t.timestamps

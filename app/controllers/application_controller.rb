@@ -4,11 +4,8 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def ensure_registered
-    ensure_authenticated
-    if logged_in? && !current_user.email_validated?
-      redirect_to edit_user_url(current_user.id)
-    end
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
   def ensure_authenticated
@@ -21,12 +18,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def logged_in?
-    !!current_user
+  def ensure_registered
+    ensure_authenticated
+    unless current_user.nil? or current_user.registered?
+      redirect_to edit_user_url(current_user.id)
+    end
   end
 
-  def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  def logged_in?
+    !!current_user
   end
 
   helper_method :current_user

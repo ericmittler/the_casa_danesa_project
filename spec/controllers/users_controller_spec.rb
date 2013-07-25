@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe UsersController do
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { FactoryGirl.create(:registered_user) }
 
   before :each do
     request.env['HTTPS'] = 'on'
@@ -19,64 +19,65 @@ describe UsersController do
     end
 
     context 'where there is an authentication provider' do
-      let(:valid_params) { {'email' => "e#{UUIDTools::UUID.timestamp_create.to_s}@example.com",
-                            'first_name' => 'Joe', 'last_name' => 'Smoe'} }
+      let(:valid_params) {
+        {'email' => "#{UUIDTools::UUID.timestamp_create}@example.com",
+         'first_name' => 'Joe',
+         'last_name' => 'Smoe'}
+      }
+
+      let(:provider) {
+        AuthenticationProvider.create!(:provider => 'foo',
+                                       :uid => UUIDTools::UUID.timestamp_create.to_s)
+
+      }
+
       before :each do
-        @provider = AuthenticationProvider.create!(:provider => 'foo', :uid => UUIDTools::UUID.timestamp_create.to_s)
-        session[:provider_uid] = @provider.uid
+        session[:provider_uid] = provider.uid
       end
 
-      context 'where a valid params are provided' do
-
-        it 'should associate the provider with the user' do
-          post :create, valid_params
-          user = User.find_by_email valid_params['email']
-          @provider.reload.user.should == user
+      context 'when the provider already has a user associated with it' do
+        before :each do
+          provider.update_attributes(:user_id => user.id)
         end
 
-        it 'should flash notice that an email has been sent' do
+        it 'should redirect to edit_user_url' do
           post :create, valid_params
-          flash[:notice].downcase.should include('mail has been sent')
+          response.should redirect_to edit_user_url(user.id)
         end
+      end
 
-        context 'when the email address is new/novel' do
-          it 'should create a user with the params' do
+      context 'when there is no user assocaited with the provider' do
+        context 'when the email provided is novel' do
+          it 'should create a new user with that (unconfirmed) email_address' do
             expect { post :create, valid_params }.to change(User, :count).by(1)
-            user = User.last
-            user.email.should == valid_params['email']
-            user.first_name.should == valid_params['first_name']
-            user.last_name.should == valid_params['last_name']
-            user.email_validated.should be_false
-            user.event_manager.should be_false
+            primary_email = User.last.primary_email
+            primary_email.address.should == valid_params['email']
+            primary_email.should be_primary
+            primary_email.should_not be_confirmed
           end
 
-          it 'should redirect to edit_user_url for the created user' do
-            post :create, valid_params
-            user = User.last
-            response.should redirect_to edit_user_url(user)
+          context 'when the email provide is not valid' do
+            it 'should create a new user without an email' do
+              valid_params['email'] = 'an invalid email address'
+              expect { post :create, valid_params }.to change(User, :count).by(1)
+              User.last.emails.length.should == 0
+            end
           end
         end
 
-        context 'when the email address matches an existing users address' do
+        context 'when the email already exists' do
           before :each do
-            @user = User.create('email' => valid_params['email'],
-                                'first_name' => 'a', 'last_name' => 'b')
+            Email.create!(:address => valid_params['email'], :user_id => 0)
           end
 
-          it 'should update the found user name' do
-            expect { post :create, valid_params }.to change(User, :count).by(0)
-            user = User.find_by_email valid_params['email']
-            user.email.should == valid_params['email']
-            user.first_name.should == valid_params['first_name']
-            user.last_name.should == valid_params['last_name']
-            user.email_validated.should be_false
-            user.event_manager.should be_false
+          it 'should not create a new user' do
+            expect { post :create, valid_params }.to_not change(User, :count)
           end
 
-          it 'should redirect to edit_user_url for the found user' do
+          it 'should redirect to new_user_url' do
             post :create, valid_params
-            user = User.find_by_email valid_params['email']
-            response.should redirect_to edit_user_url(user)
+            response.should redirect_to new_user_url
+            flash[:notice].should == 'The email provided is already associated with another user.'
           end
         end
       end

@@ -1,24 +1,23 @@
 class SessionsController < ApplicationController
 
   def create
-    user = provider = nil
-    if request.fullpath == dev_login_path && Rails.env == 'development'
-      user = User.find_by_email('eric_mittler@mac.com')
-      provider = AuthenticationProvider.find_by_user_id_and_provider(user.id, 'developer authentication')
-    else
-      provider = AuthenticationProvider.from_omniauth(env['omniauth.auth'])
-      user = User.find_by_id(provider.user_id) if provider && provider.user_id
-    end
+    provider = if request.fullpath == dev_login_path && Rails.env == 'development'
+                 AuthenticationProvider.where(:provider => 'developer authentication').first
+               else
+                 AuthenticationProvider.from_omniauth(env['omniauth.auth'])
+               end
     session[:provider_uid] = provider.uid if provider
-    if user
-      UserActivity.create!(:user_id => user.id, :name => 'logged in',
-                           :more_info => "ip: '#{request.ip}'\nprovider: '#{provider.provider}'")
-      session[:user_id] = user.id
-      url = session[:desired_url] ? session[:desired_url] : root_url
-      session[:desired_url] = nil
-      redirect_to url, notice: "#{user.first_name} authenticated via #{provider.provider}"
-    elsif !user && provider
-      redirect_to new_user_url
+    if provider
+      if provider.user
+        session[:user_id] = provider.user.id
+        UserActivity.create!(:user_id => provider.user.id, :name => 'logged in',
+                             :more_info => "ip: '#{request.ip}'\nprovider: '#{provider.provider}'")
+        url = session[:desired_url] ? session[:desired_url] : root_url
+        session[:desired_url] = nil
+        redirect_to url, notice: "#{provider.user.first_name} authenticated via #{provider.provider}"
+      else
+        redirect_to new_user_url
+      end
     else
       redirect_to authenticate_url, :alert => "Authentication failed, please try again."
     end

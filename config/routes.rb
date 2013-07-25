@@ -17,8 +17,9 @@ TheCasaDanesaProject::Application.routes.draw do
 
   if Rails.env.test?
     namespace :rspec_testing_stub do
-      get 'some_get_method', :action => :some_get_method
-      get 'some_other_get_method', :action => :some_other_get_method
+      get 'some_method_requiring_registration', :action => :some_method_requiring_registration
+      get 'some_method_not_requiring_registration', :action => :some_method_not_requiring_registration
+      get 'some_method_requiring_authentication_only', :action => :some_method_requiring_authentication_only
     end
   end
 

@@ -6,8 +6,13 @@
 #   cities => City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create!(:first_name => 'Developer',
-             :last_name => 'Example User',
-             :email => 'eric_mittler@mac.com',
-             :email_validated => true,
-             :event_manager => true)
+developer = User.create!(:first_name => 'Developer',
+                         :last_name => 'Example User',
+                         :event_manager => true)
+email = Email.create!(:user_id => developer.id,
+                            :confirmed => true,
+                            :primary => true,
+                            :address => 'eric_mittler@mac.com')
+AuthenticationProvider.create!(:provider => 'developer authentication',
+                               :user_id => developer,
+                               :uid => UUIDTools::UUID.timestamp_create.to_s)

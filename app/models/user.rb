@@ -1,11 +1,7 @@
 class User < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :email, :aka, :event_manager, :email_validated
-  validates_presence_of :first_name, :last_name, :email
-  validates_uniqueness_of :email
-  validates_format_of :email, :with => /^[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}$/i
-
+  attr_accessible :first_name, :last_name, :aka, :event_manager
   has_many :authentication_providers
-
+  has_many :emails
 
   def aka
     read_attribute(:aka).blank? ? "#{full_name}" : read_attribute(:aka)
@@ -15,7 +11,21 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def primary_email
+    if emails.length == 1
+      emails.first
+    elsif emails.length > 1
+      found = emails.select { |e| e.primary? }
+      found.length > 0 ? found[0] : emails.first
+    end
+  end
+
   def registered?
-    email_validated && !first_name.blank? && !last_name.blank? && !email.blank?
+    !first_name.blank? && !last_name.blank? && !primary_email.nil? && primary_email.confirmed?
+  end
+
+  def self.find_by_email(address)
+    email = Email.find_all_by_address(address).first
+    email.nil? ? nil : email.user
   end
 end

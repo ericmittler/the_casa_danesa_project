@@ -6,7 +6,7 @@ describe EventsController do
 
   let(:event) { Event.create! valid_attributes }
 
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { FactoryGirl.create(:registered_user) }
 
   before :each do
     request.env['HTTPS'] = 'on'

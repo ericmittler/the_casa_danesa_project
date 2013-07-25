@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe SessionsController do
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { FactoryGirl.create(:registered_user) }
 
   before :each do
     request.env['HTTPS'] = 'on'
@@ -11,9 +11,9 @@ describe SessionsController do
     context 'when in development mode and developer requests access' do
       before :each do
         Rails.stub(:env).and_return('development')
-        @developer = FactoryGirl.create(:user, :email => 'eric_mittler@mac.com')
+        @developer = FactoryGirl.create(:registered_user)
         AuthenticationProvider.create!(
-            :user_id=>@developer.id, :uid=>'test', :provider=>'developer authentication')
+            :user_id => @developer.id, :uid => 'test', :provider => 'developer authentication')
       end
 
       after :each do
@@ -72,28 +72,13 @@ describe SessionsController do
         end
       end
 
-      context 'where there is no user for the authenticated provider' do
-        before :each do
-          controller.env['omniauth.auth'] = {'provider' => 'some-provider',
-                                             'uid' => UUIDTools::UUID.timestamp_create.to_s}
-          @provider = AuthenticationProvider.create!(
-              :uid => controller.env['omniauth.auth']['uid'],
-              :user_id => nil, :provider=>'some-provider')
-        end
-
-        it 'should redirect to new_user_url' do
-          post :create
-          response.should redirect_to new_user_url
-        end
-      end
-
       context 'when there is a user for the authenticated provider' do
         before :each do
           controller.env['omniauth.auth'] = {'provider' => 'some-provider',
                                              'uid' => UUIDTools::UUID.timestamp_create.to_s}
           @provider = AuthenticationProvider.create!(
               :uid => controller.env['omniauth.auth']['uid'],
-              :user_id => user.id, :provider=>'some-provider')
+              :user_id => user.id, :provider => 'some-provider')
         end
 
         it 'should set the session[:user_id] to the users id' do
@@ -101,7 +86,7 @@ describe SessionsController do
           session[:user_id].should == user.id
         end
 
-        it 'should log that the user has authenticated' do
+        it 'should log the UserActivity that the user has authenticated' do
           expect { post :create }.to change(UserActivity, :count).by(1)
           a = UserActivity.last
           a.user_id.should == user.id
@@ -127,10 +112,25 @@ describe SessionsController do
           end
         end
 
-        it 'should flash notice "signed in"' do
+        it 'should flash notice "authenticated via <the provider-name>"' do
           post :create
           response.should redirect_to root_url
           flash[:notice].downcase.should include('authenticated via some-provider')
+        end
+      end
+
+      context 'where there is no user for the authenticated provider' do
+        before :each do
+          controller.env['omniauth.auth'] = {'provider' => 'some-provider',
+                                             'uid' => UUIDTools::UUID.timestamp_create.to_s}
+          @provider = AuthenticationProvider.create!(
+              :uid => controller.env['omniauth.auth']['uid'],
+              :user_id => nil, :provider => 'some-provider')
+        end
+
+        it 'should redirect to new_user_url' do
+          post :create
+          response.should redirect_to new_user_url
         end
       end
     end

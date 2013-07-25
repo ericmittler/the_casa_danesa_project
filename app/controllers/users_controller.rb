@@ -3,18 +3,19 @@ class UsersController < ApplicationController
 
   def create
     provider = AuthenticationProvider.find_by_uid session[:provider_uid]
+    email = Email.find_by_address(params['email'])
     if provider.nil?
       redirect_to authenticate_url
+    elsif provider.user
+      redirect_to edit_user_url(provider.user)
+    elsif email
+      redirect_to new_user_url, :notice => 'The email provided is already associated with another user.'
     else
-      @user = User.find_by_email(params['email']) || User.new(:email => params['email'])
-      @user.first_name = params['first_name']
-      @user.last_name = params['last_name']
-      if @user.save
-        provider.update_attributes(:user_id=>@user.id)
-        redirect_to edit_user_url(@user), :notice=>'An email has been sent'
-      else
-        redirect_to new_user_url
-      end
+      @user = User.create(:first_name => params['first_name'],
+                          :last_name => params['last_name'])
+      @user.emails.create(:address => params['email'], :primary => true)
+      provider.update_attributes(:user_id => @user.id)
+      redirect_to edit_user_url(@user)
     end
   end
 
@@ -38,4 +39,5 @@ class UsersController < ApplicationController
   def update
     render :text => 'update unimplemented'
   end
+
 end

@@ -26,4 +26,5 @@ group :test, :development do
   gem 'autotest-growl'
   gem 'autotest-fsevent'
   gem "factory_girl_rails", "~> 4.0"
+  gem 'shoulda'
 end

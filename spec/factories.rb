@@ -1,13 +1,26 @@
 FactoryGirl.define do
-  sequence :email do |n|
-    "test#{n}@example.com"
-  end
 
-  factory :user do
-    first_name "Testing"
+  factory :unregistered_user, :class => User do
+    first_name "Unreggie"
     last_name "User"
-    email
-    email_validated true
     aka "Joe"
   end
+
+  factory :registered_user, :class => User do
+    first_name "Reggie"
+    last_name "User"
+    aka "Joe"
+    after :create do |registered_user|
+      FactoryGirl.create :email, primary: true, user: registered_user
+    end
+  end
+
+  factory :email do
+    code 'some-code'
+    sequence(:address) {|n| "joe.#{n}.#{Time.now.to_i}@example.com"}
+    confirmed true
+    primary false
+    user_id 0
+  end
+
 end
